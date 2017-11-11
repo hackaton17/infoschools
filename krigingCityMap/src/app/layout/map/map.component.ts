@@ -9,7 +9,7 @@ import 'leaflet.markercluster';
   encapsulation: ViewEncapsulation.None
 })
 export class MapComponent implements OnInit {
-  schoolSelectedFlag= false;
+  schoolSelectedFlag= true;
   centerLat = -23.552133;
   centerLng = -46.6331418;
   schoolsCoordinates: any;
@@ -50,7 +50,7 @@ export class MapComponent implements OnInit {
   zoom = 14;
   // zoomOptions= L.control.zoom({position: 'topright'});
   zoomOptions = {
-    position: 'topright'
+    position: 'topleft'
   }
   center = L.latLng([this.centerLat, this.centerLng]);
 
@@ -69,6 +69,24 @@ export class MapComponent implements OnInit {
 
   markerClusterReady(group: L.MarkerClusterGroup) {
     this.markerClusterGroup = group;
+  }
+
+  /*mapReady(map: L.Map) {
+    map.addControl(L.control.zoom({position: 'topright'}));
+  }*/
+
+  toggleSchoolDetails() {
+    const dom: any = document.querySelector('body');
+    dom.classList.toggle('push-right-school-details');
+    const togglebutton: any = document.getElementById('toggle-school-details-icon');
+    if (dom.classList.contains('push-right-school-details')) {
+      togglebutton.classList.add('fa-chevron-left');
+      togglebutton.classList.remove('fa-chevron-right');
+    } else {
+      // this.toggleSchoolDetailsIcon = 'chevron_left';
+      togglebutton.classList.add('fa-chevron-right');
+      togglebutton.classList.remove('fa-chevron-left');
+    }
   }
 
 }
