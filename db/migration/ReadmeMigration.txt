@@ -16,3 +16,10 @@ execute the script using:
 
 
 insert into schools(identifier,longitude,latitude,code,nomeesc,created_at,updated_at) select id,cast(longitude as numeric),cast(latitude as numeric),codesctx,nomeesc,now(),now() from esc2013_rmsp_cem;
+
+to scaffold all the table
+cat fields | sed 's/\ NUMERIC([0-9,\ ]*),/\:decimal/g' | sed 's/\ VARCHAR([0-9]*),/\:string/g' > fields2
+
+echo "rails generate scaffold Schoolb "|cat - fields2 > fields3
+
+edit fields3 remove last varchar and newline
