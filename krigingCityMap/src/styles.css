@@ -151,19 +151,6 @@ body{
   margin-left: 14rem !important;
 }
 
-/* logotipos */
-/*.sprite {
-  background: url(assets/images/sprite.png) no-repeat;
-}*/
-
-/* logo-cem*/
-.logo-cem {
-  display: block;
-  width: 108px;
-  height: 40px;
-  background-position: -188px -42px;
-}
-
 .school-div-icon {
   background: url(assets/images/marcador_school_default.png) no-repeat;
 }

@@ -9,13 +9,17 @@ import { MapComponent } from './map/map.component';
 import {MapModule} from './map/map.module';
 import {SchoolService} from '../school.service';
 import {ShareddataService} from '../services/shareddata.service';
+import {Ng2CompleterModule} from 'ng2-completer';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     LayoutRoutingModule,
     HttpModule,
-    HeaderModule
+    HeaderModule,
+    FormsModule,
+    Ng2CompleterModule
   ],
   declarations: [
     LayoutComponent
