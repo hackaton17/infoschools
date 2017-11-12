@@ -123,7 +123,7 @@
   </div>
 </nav>
 
-<!-- MODAL: SETTINGS -->
+<!-- MODAL: COMENTÁRIO -->
 <div class="modal fade" id="exampleModal" tabindex="-1"  role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -138,25 +138,41 @@
       <div class="modal-body">
         <form >
           <!-- Base Layers -->
-          <div class="form-group">
-            <label for="nomeUser">Nome:</label>
-            <input type="text" class="form-control" id="nomeUser" aria-describedby="nomeHelp" placeholder="Nome completo">
+          <div class="form-group row">
+            <label for="nomeUser" class="col-sm-2 col-form-label">Nome:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="nomeUser" placeholder="Nome completo">
+            </div>
 
           </div>
-          <div class="form-group">
-            <label for="cpfUser">CPF:</label>
-            <input type="number" class="form-control" id="cpfUser" aria-describedby="cpfHelp" placeholder="cpf">
-
+          <div class="form-group row">
+            <label for="cpfUser" class="col-sm-2 col-form-label">CPF:</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="cpfUser" placeholder="cpf">
+            </div>
           </div>
-          <div class="form-group">
-            <label for="emailUser">Email</label>
-            <input type="email" class="form-control" id="emailUser" aria-describedby="emailHelp" placeholder="Email">
-
+          <div class="form-group row">
+            <label for="emailUser" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="emailUser" placeholder="Email">
+            </div>
           </div>
-          <div class="form-group">
-            <label for="comentarioUser">Comentário:</label>
-            <textarea class="form-control" id="comentarioUser" aria-describedby="comentarioHelp" rows="3"></textarea>
-            <small id="comentarioHelp" class="form-text text-muted">Inserir um comentário</small>
+          <div class="form-group row">
+            <label for="comentarioUser" class="col-sm-2 col-form-label">Coment.:</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" id="comentarioUser" aria-describedby="comentarioHelp" rows="3"></textarea>
+              <small id="comentarioHelp" class="form-text text-muted">Inserir um comentário</small>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label" >Avaliação:</label>
+            <div  class="col-sm-10" style="text-align:center; width:100%;">
+              <i class="fa fa-2x fa-star-o"></i>
+              <i class="fa fa-2x fa-star-o"></i>
+              <i class="fa fa-2x fa-star-o"></i>
+              <i class="fa fa-2x fa-star-o"></i>
+              <i class="fa fa-2x fa-star-o"></i>
+            </div>
           </div>
         </form>
       </div>
@@ -172,4 +188,4 @@
     </div>
   </div>
 </div>
-<!-- END MODAL: SETTINGS -->
+<!-- END MODAL: COMENTÁRIO -->

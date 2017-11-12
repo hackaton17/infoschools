@@ -12,6 +12,7 @@ import {LeafletMarkerClusterModule} from '@asymmetrik/ngx-leaflet-markercluster'
 import {SchoolService} from './school.service';
 import {ShareddataService} from './services/shareddata.service';
 import {Ng2CompleterModule} from 'ng2-completer';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {Ng2CompleterModule} from 'ng2-completer';
     LeafletModule.forRoot(),
     LeafletMarkerClusterModule.forRoot(),
     Ng2CompleterModule,
+    FormsModule
   ],
   providers: [SchoolService, ShareddataService],
   bootstrap: [AppComponent]

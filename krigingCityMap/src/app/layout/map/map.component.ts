@@ -188,4 +188,8 @@ export class MapComponent implements OnInit {
     }
   }
 
+  filterSchoolsByIndicator() {
+
+  }
+
 }

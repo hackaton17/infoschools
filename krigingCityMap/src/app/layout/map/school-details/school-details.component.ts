@@ -101,4 +101,8 @@ export class SchoolDetailsComponent implements OnInit {
     });
   }
 
+  onApply () {
+    alert("Cadastrar o comentário");
+  }
+
 }

@@ -33,16 +33,50 @@
     <!--<div style="height: 100%;" leaflet [leafletOptions]="options2" [leafletLayers]="neighboringSchoolsLayer"></div>-->
     <button type="button" *ngIf="schoolSelectedFlag"
             style="position: absolute; z-index: 401;
-              right: 25px; top: 10px; width:40px; height: 50px;
-              background: transparent; border-color: transparent;"
+            right: 5px; top: 10px; width:40px; height: 50px;
+            border: 2px solid rgba(0,0,0,0.2); border-radius: 4px;"
+            class="bg-light"
             (click)="toggleSchoolDetails()">
-      <i style="right: 25px" id="toggle-school-details-icon" class="fa fa-fw fa-2x fa-chevron-left"></i>
+      <i id="toggle-school-details-icon" class="fa fa-fw fa-chevron-left"></i>
     </button>
 
     <!-- Schools Details -->
     <!-- *ngIf="schoolSelectedFlag" -->
-
     <app-school-details></app-school-details>
+    <!-- end School Details -->
+
+    <!-- Filtrar escolas por nota -->
+    <div class="bg-light" style="padding: 10px;position: absolute; z-index: 401;
+            left: 5px; bottom: 10px; width:600px; height: 90px;
+            border: 2px solid rgba(0,0,0,0.2); border-radius: 4px; font-size: 13px;">
+      <form>
+        <label><b>Indicador educacional: </b></label>
+        <div class="form-row align-items-center">
+          <div class="col">
+            <!--<label for="inlineFormCustomSelect">Indicador educacional: </label>-->
+            <select class="form-control form-control-sm" id="inlineFormCustomSelect">
+              <option selected>Indicador</option>
+              <option value="ab1em_14">Taxa de Abandono</option>
+              <option value="ap3em_14">Taxa de Aprovação</option>
+            </select>
+          </div>
+          <div class="col">
+            <input type="number" class="form-control form-control-sm" placeholder="Min"
+            >
+          </div>
+          <div class="col">
+            <input type="number" class="form-control form-control-sm" placeholder="Max"
+            >
+          </div>
+
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary" onclick="filterSchoolsByIndicator()">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- End Filtro -->
 
   </div>
 </div>
