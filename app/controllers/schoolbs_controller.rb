@@ -14,7 +14,7 @@ class SchoolbsController < ApplicationController
   # GET /schoolbs/1
   # GET /schoolbs/1.json
   def show
-    @schoolbs = Schoolb.find(params[:id])
+    @schoolb = Schoolb.find(params[:id])
   end
 
   # returns the list of all the

@@ -1,1 +1,1 @@
-json.name @school.nomeesc
+json.name @schoolb.nomeesc
