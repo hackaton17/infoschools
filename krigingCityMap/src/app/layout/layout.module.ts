@@ -11,6 +11,7 @@ import {SchoolService} from '../school.service';
 import {ShareddataService} from '../services/shareddata.service';
 import {Ng2CompleterModule} from 'ng2-completer';
 import {FormsModule} from '@angular/forms';
+import {MapService} from '../map.service';
 
 @NgModule({
   imports: [
@@ -24,6 +25,6 @@ import {FormsModule} from '@angular/forms';
   declarations: [
     LayoutComponent
   ],
-  providers: [SchoolService, ShareddataService]
+  providers: [SchoolService, ShareddataService, MapService]
 })
 export class LayoutModule { }

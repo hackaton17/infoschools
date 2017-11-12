@@ -13,6 +13,7 @@ import {SchoolService} from './school.service';
 import {ShareddataService} from './services/shareddata.service';
 import {Ng2CompleterModule} from 'ng2-completer';
 import {FormsModule} from '@angular/forms';
+import {MapService} from './map.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import {FormsModule} from '@angular/forms';
     Ng2CompleterModule,
     FormsModule
   ],
-  providers: [SchoolService, ShareddataService],
+  providers: [SchoolService, ShareddataService, MapService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

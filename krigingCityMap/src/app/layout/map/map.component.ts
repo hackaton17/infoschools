@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 import {CompleterData, CompleterItem, CompleterService} from 'ng2-completer';
 import {CustomData} from '../../custom.data';
 import {Http} from '@angular/http';
+import {MapService} from '../../map.service';
 
 @Component({
   selector: 'app-map',
@@ -91,6 +92,7 @@ export class MapComponent implements OnInit {
   constructor(private completerService: CompleterService,
               private schoolService: SchoolService,
               private sharedDataService: ShareddataService,
+              private mapService: MapService,
               private router: Router,
               private http: Http) {
     this.schoolListFiltered = new CustomData(http);
@@ -101,9 +103,7 @@ export class MapComponent implements OnInit {
     // get the school list and Map the schools only once time
     if (this.center.lat === -23.552133) {
       this.getSchoolsList();
-
     }
-
 
   }
 
@@ -193,7 +193,7 @@ export class MapComponent implements OnInit {
 
     if (form !== null) {
 
-      this.schoolService.showSchoolsByIndicator(form.indicator, form.min, form.max).then((res) => {
+      this.mapService.showSchoolsByIndicator(form.indicator, form.min, form.max).then((res) => {
         this.schoolsCoordinates = res;
         console.log(this.schoolsCoordinates[1]);
 
