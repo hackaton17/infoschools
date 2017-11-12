@@ -8,17 +8,17 @@
 # This data can be loaded with the rails db:seed command (or created
 # alongside the database with db:setup).
 
-data = YAML
-       .load(File.read("#{Rails.root}/db/data.yml"))
-       .with_indifferent_access
+# data = YAML
+#       .load(File.read("#{Rails.root}/db/data.yml"))
+#       .with_indifferent_access
 
-data['schools'].each do |school_data|
-  School.create(
-    identifier: school_data[:identifier],
-    longitude: school_data[:longitude],
-    latitude: school_data[:latitude],
-    code: school_data[:code],
-    nomeesc: school_data[:nomeesc]
+# data['schools'].each do |school_data|
+#   School.create(
+#     identifier: school_data[:identifier],
+#     longitude: school_data[:longitude],
+#     latitude: school_data[:latitude],
+#     code: school_data[:code],
+#     nomeesc: school_data[:nomeesc]
     
-  )
-end
+#   )
+# end
