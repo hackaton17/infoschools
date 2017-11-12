@@ -146,6 +146,7 @@ export class MapComponent implements OnInit {
         container = $('<div />');
         school_i = this.schoolsCoordinates[i];
         popup = '<b>ESCOLA: </b>' + school_i.NO_ENTIDAD +
+          '<br/><b>ENEM (2013): </b>' + (school_i.ENEM2013 === 9999.99 ? 'Não apresenta': school_i.ENEM2013) +
           '<br/><b>BAIRRO: </b>' + school_i.BAIRRO +
           '<br/><b>ENDEREÇO: </b>' + school_i.ENDERECO + ' - ' + school_i.NUMERO  +
           '<br/><b>LOC.: </b>' + school_i.lat + ', ' + school_i.lon +
@@ -210,6 +211,7 @@ export class MapComponent implements OnInit {
           container = $('<div />');
           school_i = this.schoolsCoordinates[i];
           popup = '<b>ESCOLA: </b>' + school_i.NO_ENTIDAD +
+            '<br/><b>ENEM (2013): </b>' + (school_i.ENEM2013 === 9999.99 ? 'Não apresenta': school_i.ENEM2013) +
             '<br/><b>BAIRRO: </b>' + school_i.BAIRRO +
             '<br/><b>ENDEREÇO: </b>' + school_i.ENDERECO + ' - ' + school_i.NUMERO  +
             '<br/><b>LOC.: </b>' + school_i.lat + ', ' + school_i.lon +
