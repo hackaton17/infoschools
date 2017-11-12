@@ -18,7 +18,7 @@ class SchoolbsController < ApplicationController
     #query = query + ",num_esc,ab1em_14,ap3em_14,enem2013,longitude,latitude FROM schoolbs"
     #query = query + " ORDER BY enem2013 ) x "
     #query = query + " WHERE x.idschool = " + params[:id]
-    query = "SELECT * FROM (SELECT row_number() OVER (ORDER BY s.enem2013 nulls last) as ranking,"
+    query = "SELECT * FROM (SELECT row_number() OVER (ORDER BY s.enem2013 DESC nulls last) as ranking,"
     query = query + " idschool,codesc,nomeesc,bairro,end_esc,num_esc,ab1em_14,ap3em_14,enem2013,"
     query = query + " longitude,latitude FROM schoolbs s) t1 LEFT JOIN ( SELECT schoolb_id, NULLIF(AVG(value),0.0)"
     query = query + " as stars FROM qualifications GROUP BY schoolb_id) t2 ON t1.idschool = t2.schoolb_id"
@@ -31,7 +31,7 @@ class SchoolbsController < ApplicationController
     #query = "SELECT row_number() OVER (ORDER BY enem2013 nulls last) as ranking, idschool,codesc,nomeesc,bairro,end_esc"
     #query = query + ",num_esc,ab1em_14,ap3em_14,enem2013,longitude,latitude FROM schoolbs"
     #query = query + " ORDER BY enem2013"
-    query = "SELECT * FROM (SELECT row_number() OVER (ORDER BY s.enem2013 nulls last) as ranking,"
+    query = "SELECT * FROM (SELECT row_number() OVER (ORDER BY s.enem2013 DESC nulls last) as ranking,"
     query = query + " idschool,codesc,nomeesc,bairro,end_esc,num_esc,ab1em_14,ap3em_14,enem2013,"
     query = query + " longitude,latitude FROM schoolbs s) t1 LEFT JOIN ( SELECT schoolb_id, NULLIF(AVG(value),0.0)"
     query = query + " as stars FROM qualifications GROUP BY schoolb_id) t2 ON t1.idschool = t2.schoolb_id"
