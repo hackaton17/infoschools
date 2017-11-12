@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   root 'application#index'
 
   get '/schoolbs/list' => 'schoolbs#list', defaults: {format: 'json'}
-  get '/schoolbs/search' => 'schoolbs#search', defaults: { format: 'json' }
+  get '/schoolbs/search/:txt' => 'schoolbs#search', defaults: { format: 'json' }
   get '/schoolbs/:id'    => 'schoolbs#show', defaults: { format: 'json' }
   get '/schoolbs/intervals/:test/:lo/:hi'  => 'schoolbs#intervals', defaults: { format: 'json' }
+  get '/qualifications/:id'    => 'qualifications#list', defaults: { format: 'json' }
   # # Qualifications.
   # post '/qualifications'          => 'qualifications#create'
   # get  '/qualifications/:qualification_id' => 'qualifications#index'
