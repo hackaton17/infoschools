@@ -87,8 +87,8 @@ export class SchoolDetailsComponent implements OnInit {
       this.DESC_SITUACAO_FUNCIONAMENTO = this.schoolSelected.DESC_SITUACAO_FUNCIONAMENTO;
       this.ID_LOCALIZACAO = this.schoolSelected.ID_LOCALIZACAO;
       this.ID_LABORATORIO_INFORMATICA = this.schoolSelected.ID_LABORATORIO_INFORMATICA;
-      this.ID_QUADRA_ESPORTES_COBERTA = this.schoolSelected.ID_QUADRA_ESPORTES_COBERTA;
-      this.ID_QUADRA_ESPORTES_DESCOBERTA = this.schoolSelected.ID_QUADRA_ESPORTES_DESCOBERTA;
+      this.ID_QUADRA_ESPORTES_COBERTA = this.schoolSelected.RANKING;
+      this.ID_QUADRA_ESPORTES_DESCOBERTA = this.schoolSelected.STARS;
       this.ID_BIBLIOTECA = this.schoolSelected.ID_BIBLIOTECA;
       this.LOCATION.LAT = this.schoolSelected.lat;
       this.LOCATION.LON = this.schoolSelected.lon;

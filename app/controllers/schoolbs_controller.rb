@@ -5,7 +5,7 @@ class SchoolbsController < ApplicationController
   def search
     aux = "%" + params[:txt] + "%"
 
-    @schoolbs = Schoolb.where("nomeesc LIKE :part",{:part => aux}) #.find_by_sql(query)
+    @schoolbs = Schoolb.where("nomeesc ILIKE :part",{:part => aux}) #.find_by_sql(query)
   end
   # GET /schoolbs
   # GET /schoolbs.json
