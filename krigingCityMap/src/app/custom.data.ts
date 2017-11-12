@@ -12,7 +12,7 @@ export class CustomData extends Subject<CompleterItem[]> implements CompleterDat
     // this.http.get('/school/search?text=' + term )
     // var url = "http://200.144.244.241:3002";
     var url = "http://localhost:3000";
-    this.http.get(url + '/schoolb/' + term )
+    this.http.get(url + '/schoolbs/search/' + term )
       .map((res: Response) => {
         // Convert the result to CompleterItem[]
         const data = res.json();
