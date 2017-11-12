@@ -8,7 +8,7 @@ export class SchoolService {
   // URL da nossa API
   //private url: string = "http://200.144.244.241:3002/school";
   private url: string = "http://localhost:3000/schoolbs/list";
-  private urlbase: string = "http://localhost:3000/schoolb";
+  private urlbase: string = "http://localhost:3000/schoolbs";
   // private url: string = "https://hackaton-hansbecc.c9users.io/schoolbs/list";
 
   constructor(private http: Http) { }
@@ -32,7 +32,8 @@ export class SchoolService {
       this.http.get(this.urlbase + '/' + id)
         .map(res => res.json())
         .subscribe(res => {
-          resolve(res);
+          console.log("resxxx",res);
+          resolve(res[0]);
         }, (err) => {
           reject(err);
         });

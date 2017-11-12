@@ -114,7 +114,7 @@ export class MapComponent implements OnInit {
       console.log("aqui papu");
       console.log(item);
 
-      this.selectedSchoolID = item ? item.originalObject._id : '';
+      this.selectedSchoolID = item ? item.originalObject.ID : '';
       // send school ID to school-details component via observable subject
       this.sharedDataService.sendSchoolID(this.selectedSchoolID);
       this.onSchoolSel.emit(this.selectedSchoolID);
@@ -127,9 +127,9 @@ export class MapComponent implements OnInit {
   getSchoolsList() {
     this.schoolSelectedFlag = true;
     this.schoolService.getAllSchools().then((res) => {
-      this.schoolsCoordinatesObject = res;
-      this.schoolsCoordinates = this.schoolsCoordinatesObject.schoolbs;
-      //this.schoolsCoordinates = res;
+      //this.schoolsCoordinatesObject = res;
+      //this.schoolsCoordinates = this.schoolsCoordinatesObject.schoolbs;
+      this.schoolsCoordinates = res;
       console.log(this.schoolsCoordinates[1]);
       console.log("viste?");
 

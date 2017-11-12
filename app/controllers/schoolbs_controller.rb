@@ -21,7 +21,9 @@ class SchoolbsController < ApplicationController
     #query = query + " ORDER BY enem2013 ) x "
     #query = query + " WHERE x.idschool = " + params[:id]
     query = "SELECT * FROM (SELECT row_number() OVER (ORDER BY s.enem2013 DESC nulls last) as ranking,"
-    query = query + " idschool,codesc,nomeesc,bairro,end_esc,num_esc,ab1em_14,ap3em_14,enem2013,"
+    query = query + " idschool,codesc,nomeesc,bairro,end_esc,num_esc,ab1em_14,ap3em_14,enem2013,nomemun,telefone,cep,"
+    query = query + " CASE WHEN biblio>0 THEN 'SIM' ELSE 'NÃO' END as id_biblio,"
+    query = query + " CASE WHEN lab_inf>0 THEN 'SIM' ELSE 'NÃO' END as id_lab_inf,"
     query = query + " longitude,latitude FROM schoolbs s) t1 LEFT JOIN ( SELECT schoolb_id, NULLIF(AVG(value),0.0)"
     query = query + " as stars FROM qualifications GROUP BY schoolb_id) t2 ON t1.idschool = t2.schoolb_id"
     query = query + " WHERE t1.idschool = " + params[:id]
@@ -34,7 +36,9 @@ class SchoolbsController < ApplicationController
     #query = query + ",num_esc,ab1em_14,ap3em_14,enem2013,longitude,latitude FROM schoolbs"
     #query = query + " ORDER BY enem2013"
     query = "SELECT * FROM (SELECT row_number() OVER (ORDER BY s.enem2013 DESC nulls last) as ranking,"
-    query = query + " idschool,codesc,nomeesc,bairro,end_esc,num_esc,ab1em_14,ap3em_14,enem2013,"
+    query = query + " idschool,codesc,nomeesc,bairro,end_esc,num_esc,ab1em_14,ap3em_14,enem2013,nomemun,telefone,cep,"
+    query = query + " CASE WHEN biblio>0 THEN 'SIM' ELSE 'NÃO' END as id_biblio,"
+    query = query + " CASE WHEN lab_inf>0 THEN 'SIM' ELSE 'NÃO' END as id_lab_inf,"
     query = query + " longitude,latitude FROM schoolbs s) t1 LEFT JOIN ( SELECT schoolb_id, NULLIF(AVG(value),0.0)"
     query = query + " as stars FROM qualifications GROUP BY schoolb_id) t2 ON t1.idschool = t2.schoolb_id"
     @schoolbs = Schoolb.find_by_sql(query)
@@ -42,9 +46,15 @@ class SchoolbsController < ApplicationController
 
   # returns all the schools with a calification in a given interval,
   def intervals
-    query = "SELECT idschool,codesc,nomeesc,bairro,end_esc"
-    query = query + ",num_esc,ab1em_14,ap3em_14,enem2013,longitude,latitude FROM schoolbs"
-    query = query + " WHERE " + params[:test] + " >= " + params[:lo] + " AND " + params[:test] + " <= " + params[:hi];
+    #query = "SELECT idschool,codesc,nomeesc,bairro,end_esc"
+    #query = query + ",num_esc,ab1em_14,ap3em_14,enem2013,longitude,latitude FROM schoolbs"
+    query = "SELECT * FROM (SELECT row_number() OVER (ORDER BY s.enem2013 DESC nulls last) as ranking,"
+    query = query + " idschool,codesc,nomeesc,bairro,end_esc,num_esc,ab1em_14,ap3em_14,enem2013,nomemun,telefone,cep,"
+    query = query + " CASE WHEN biblio>0 THEN 'SIM' ELSE 'NÃO' END as id_biblio,"
+    query = query + " CASE WHEN lab_inf>0 THEN 'SIM' ELSE 'NÃO' END as id_lab_inf,"
+    query = query + " longitude,latitude FROM schoolbs s) t1 LEFT JOIN ( SELECT schoolb_id, NULLIF(AVG(value),0.0)"
+    query = query + " as stars FROM qualifications GROUP BY schoolb_id) t2 ON t1.idschool = t2.schoolb_id"
+    query = query + " WHERE t1." + params[:test] + " >= " + params[:lo] + " AND t1." + params[:test] + " <= " + params[:hi];
     #render html: query
     @schoolbs = Schoolb.find_by_sql(query)
   end

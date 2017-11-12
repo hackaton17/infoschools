@@ -50,7 +50,10 @@ export class SchoolDetailsComponent implements OnInit {
   ngOnInit() {
     const s = this.sharedDataService.getSchoolID().subscribe(
       res => {
+        console.log("cosa",this.sharedDataService);
+        console.log("res",res);
         this.schoolSelectedID = res;
+        //this.getSchoolDetailedInformation(this.schoolSelectedID);
         this.getSchoolDetailedInformation(this.schoolSelectedID);
       });
     this.subscription.add(s);
@@ -66,6 +69,7 @@ export class SchoolDetailsComponent implements OnInit {
   getSchoolDetailedInformation(schoolID: string) {
     // this.router.navigate([this.URL_ROOT + 'school/school-details/' + schoolID]);
     // this.schoolObject = schoolID;
+    console.log("id escuela",schoolID);
     this.schoolService.showSchool(schoolID).then((res) => {
       this.schoolSelected = res;
       this.CODESC = this.schoolSelected.CODESC;

@@ -1,6 +1,7 @@
 import { Http, Response } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 import { CompleterData, CompleterItem} from 'ng2-completer';
+import {any} from "codelyzer/util/function";
 
 export class CustomData extends Subject<CompleterItem[]> implements CompleterData {
   constructor(private http: Http) {
@@ -16,9 +17,12 @@ export class CustomData extends Subject<CompleterItem[]> implements CompleterDat
       .map((res: Response) => {
         // Convert the result to CompleterItem[]
         const data = res.json();
+        let tmp: any;
+        tmp=data.schoolbs;
+        console.log(res.json());
         // display the items into range 0 e 5
         // data = data.slice(0, 5);
-        const matches: CompleterItem[] = data.map((item: any) => this.convertToItem(item));
+        const matches: CompleterItem[] = res.json().map((item: any) => this.convertToItem(item));
         this.next(matches);
       })
       .catch(() => [])
