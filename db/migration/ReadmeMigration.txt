@@ -1,4 +1,6 @@
- 
+GEOSCHOOLS
+QUALITY SCHOOLS
+
 The db obtained from http://web.fflch.usp.br/centrodametropole/716
 is converted to sentences with:
     pgdbf ESC2013_RMSP_CEM.DBF > dbfile.sql
@@ -22,4 +24,10 @@ cat fields | sed 's/\ NUMERIC([0-9,\ ]*),/\:decimal/g' | sed 's/\ VARCHAR([0-9]*
 
 echo "rails generate scaffold Schoolb "|cat - fields2 > fields3
 
-edit fields3 remove last varchar and newline
+edit fields3 remove last varchar and newline, change id field to idSchool
+
+
+
+:::: to make script: cat tmp|sed 's/\:string/,/g'|sed 's/\:decimal/,/g'
+
+
