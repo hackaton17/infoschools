@@ -9,6 +9,8 @@ import { LayoutComponent } from './layout/layout.component';
 import {AppRoutingModule} from './app-routing.module';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 import {LeafletMarkerClusterModule} from '@asymmetrik/ngx-leaflet-markercluster';
+import {SchoolService} from './school.service';
+import {ShareddataService} from './services/shareddata.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import {LeafletMarkerClusterModule} from '@asymmetrik/ngx-leaflet-markercluster'
     LeafletModule.forRoot(),
     LeafletMarkerClusterModule.forRoot()
   ],
-  providers: [],
+  providers: [SchoolService, ShareddataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

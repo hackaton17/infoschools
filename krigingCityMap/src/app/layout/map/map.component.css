@@ -3,17 +3,39 @@ agm-map {
   width: 100%;
 }
 
-/*.container-dimensions {
-  height: 100%;
-}*/
-/*.map-container {
-  background-color: #151515;
-  height:100%;
-  margin: -7px;
-}*/
 .map-container {
-  background-color: #ffffff;/*#151515;*/
-  margin: 0px -15px -62px;
-  padding-bottom: 62px;
-  height: 100vh;
+  background-color: #ffffff;
+  padding-bottom: 2px;
+  margin: 2px 0px 0px;
+  height: calc(100vh - 68px);
+  height: -moz-calc(100vh - 68px);
+  height: -webkit-calc(100vh - 68px);
+  overflow-x: hidden;
+  overflow-y: hidden;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+}
+
+.section-action-button-icon {
+  margin: 0px auto;
+  position: relative;
+}
+
+.btn-toggle-schooldetails {
+  border: 2px solid rgba(0,0,0,.7);
+  left: 1px;
+  top: 1px;
+  width: auto;
+  height: 55px;
+  padding: 0px;
+  position: absolute;
+  z-index: 401;
+}
+
+@media screen and (max-width: 575px) {
+  .btn-toggle-schooldetails {
+    height: 51px;
+  }
 }

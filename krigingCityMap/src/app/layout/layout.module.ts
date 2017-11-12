@@ -7,6 +7,8 @@ import {LayoutComponent} from './layout.component';
 import {HttpModule} from '@angular/http';
 import { MapComponent } from './map/map.component';
 import {MapModule} from './map/map.module';
+import {SchoolService} from '../school.service';
+import {ShareddataService} from '../services/shareddata.service';
 
 @NgModule({
   imports: [
@@ -17,6 +19,7 @@ import {MapModule} from './map/map.module';
   ],
   declarations: [
     LayoutComponent
-  ]
+  ],
+  providers: [SchoolService, ShareddataService]
 })
 export class LayoutModule { }
