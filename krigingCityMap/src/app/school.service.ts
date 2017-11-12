@@ -7,6 +7,7 @@ export class SchoolService {
 
   // URL da nossa API
   private url: string = "http://200.144.244.241:3002/school";
+  //private url: string = "http://localhost:3000/school";
 
   constructor(private http: Http) { }
 
