@@ -7,11 +7,6 @@ class QualificationsController < ApplicationController
     @qualification = Qualification.find_by_sql(query)
   end
   
-  def qualification_params
-    params.require(:qualification).permit(:schoolb_id, :user, :user_type, 
-    :value, :comment)
-  end
-  
   # Retrieve a school's qualifications.
   def index
     @qualifications = Qualification.where(schoolb_id: params[:schoolb_id])
