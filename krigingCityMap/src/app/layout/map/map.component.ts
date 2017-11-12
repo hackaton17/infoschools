@@ -111,7 +111,10 @@ export class MapComponent implements OnInit {
     console.log('onSchoolSelected', item);
     this.toggleSchoolDetails();
     if (item !== null) {
-      this.selectedSchoolID = item ? item.originalObject.ID : '';
+      console.log("aqui papu");
+      console.log(item);
+
+      this.selectedSchoolID = item ? item.originalObject._id : '';
       // send school ID to school-details component via observable subject
       this.sharedDataService.sendSchoolID(this.selectedSchoolID);
       this.onSchoolSel.emit(this.selectedSchoolID);
