@@ -23,9 +23,18 @@ class SchoolbsController < ApplicationController
 
   # returns the list of all the
   def list
-    query = "SELECT row_number() over (ORDER BY enem2013 nulls last) as ranking, idschool,codesc,nomeesc,bairro,end_esc"
+    query = "SELECT row_number() OVER (ORDER BY enem2013 nulls last) as ranking, idschool,codesc,nomeesc,bairro,end_esc"
     query = query + ",num_esc,ab1em_14,ap3em_14,enem2013,longitude,latitude FROM schoolbs"
-    query = query + " order by enem2013"
+    query = query + " ORDER BY enem2013"
+    @schoolbs = Schoolb.find_by_sql(query)
+  end
+
+  # returns all the schools with a calification in a given interval,
+  def intervals
+    query = "SELECT idschool,codesc,nomeesc,bairro,end_esc"
+    query = query + ",num_esc,ab1em_14,ap3em_14,enem2013,longitude,latitude FROM schoolbs"
+    query = query + " WHERE " + params[:test] + " >= " + params[:lo] + " AND " + params[:test] + " <= " + params[:hi];
+    #render html: query
     @schoolbs = Schoolb.find_by_sql(query)
   end
 
