@@ -7,8 +7,8 @@ import {Subscription} from 'rxjs/Subscription';
 @Component({
   selector: 'app-school-details',
   templateUrl: './school-details.component.html',
-  styleUrls: ['./school-details.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./school-details.component.css']
+  // encapsulation: ViewEncapsulation.None
 })
 export class SchoolDetailsComponent implements OnInit {
   @Output() onSchoolLocation = new EventEmitter<any>();

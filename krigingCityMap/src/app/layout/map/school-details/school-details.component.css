@@ -2,7 +2,7 @@
   border-radius: 0;
   position: fixed;
   z-index: 500;
-  top: 55px;
+  top: 65px;
   left: 0px; /*408px to display it*/
   width: 360px; /*408*/
   margin-left: -360px; /*408*/
@@ -107,7 +107,7 @@
 }
 @media screen and (max-width: 992px) {
   .sidebar-school-details {
-    top: 64px;/*54*/
+    top: 65px;/*54*/
     left: 0px;
   }
 }
@@ -381,6 +381,18 @@ button {
 .section-info-text, .section-info-text .widget-pane-link {
   color: rgba(0, 0, 0, 0.87);
   text-align: left;
+}
+
+.section-info-secondary-text-newline {
+  padding: 0 24px 6px 50px;
+  position: relative;
+}
+
+.section-info-secondary-text, .section-info-secondary-text .widget-pane-link {
+  color: rgba(0, 0, 0, 0.87);
+  z-index: 1;
+  position: relative;
+  text-align: inherit;
 }
 
 /* toggle */

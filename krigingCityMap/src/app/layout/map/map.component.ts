@@ -11,8 +11,8 @@ import {Http} from '@angular/http';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./map.component.css']
+  // encapsulation: ViewEncapsulation.None
 })
 export class MapComponent implements OnInit {
   schoolSelectedFlag= true;
