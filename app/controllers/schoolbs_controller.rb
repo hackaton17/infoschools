@@ -14,12 +14,19 @@ class SchoolbsController < ApplicationController
   # GET /schoolbs/1
   # GET /schoolbs/1.json
   def show
-    @schoolbs = Schoolb.find(params[:id])
+    query = "SELECT * FROM ( SELECT row_number() OVER (ORDER BY enem2013 nulls last) as ranking, idschool,codesc,nomeesc,bairro,end_esc"
+    query = query + ",num_esc,ab1em_14,ap3em_14,enem2013,longitude,latitude FROM schoolbs"
+    query = query + " ORDER BY enem2013 ) x "
+    query = query + " WHERE x.idschool = " + params[:id]
+    @schoolb = Schoolb.find_by_sql(query)
   end
 
   # returns the list of all the
   def list
-    @schoolbs = Schoolb.all
+    query = "SELECT row_number() over (ORDER BY enem2013 nulls last) as ranking, idschool,codesc,nomeesc,bairro,end_esc"
+    query = query + ",num_esc,ab1em_14,ap3em_14,enem2013,longitude,latitude FROM schoolbs"
+    query = query + " order by enem2013"
+    @schoolbs = Schoolb.find_by_sql(query)
   end
 
   # POST /schoolbs
