@@ -18,7 +18,9 @@ class QualificationsController < ApplicationController
   end
   
   def create
-    @qualification = Qualification.create(qualification_params)
+    school=School.find(params[:schoolb_id])
+    @qualification = Qualification.create(schoolb: school, user: params[:user],
+    user_type: params[:user_type], value: params[:value], comment: params[:comment])
   end
 
 end
