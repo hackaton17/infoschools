@@ -1,4 +1,4 @@
-class School < ApplicationRecord::Base
+class School < ApplicationRecord
 
   #Associations
   has_many   :qualifications
@@ -11,7 +11,4 @@ class School < ApplicationRecord::Base
   validates :longitude, numericality: { greater_than_or_equal_to: -180,
                                         less_than_or_equal_to: 180 }
 
-  def self.search
-    @schools = School.all
-  end
 end
