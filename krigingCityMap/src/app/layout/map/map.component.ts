@@ -127,7 +127,7 @@ export class MapComponent implements OnInit {
       /*this.schoolsCoordinatesObject = res;
       this.schoolsCoordinates = this.schoolsCoordinatesObject.schoolbs;*/
       this.schoolsCoordinates = res;
-      console.log(this.schoolsCoordinates);
+      console.log(this.schoolsCoordinates[1]);
 
       const data: any[] = [];
       console.log(this.schoolsCoordinates.length);

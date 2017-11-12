@@ -77,21 +77,21 @@
       <div class="section-info">
         <div class="section-info-line">
           <span aria-hidden="true" role="img" class="section-info-icon fa fa-fw fa-angle-right"></span>
-          <div class="section-info-icon" ><b>Laboratório de Informática:</b></div>
+          <div class="section-info-icon" ><b>Lab. de Informática:</b></div>
           <span class="section-info-text">{{ID_LABORATORIO_INFORMATICA}}</span>
         </div>
       </div>
       <div class="section-info">
         <div class="section-info-line">
           <span aria-hidden="true" role="img" class="section-info-icon fa fa-fw fa-angle-right"></span>
-          <div class="section-info-icon" ><b>Quadra de esportes coberta:</b></div>
+          <div class="section-info-icon" ><b>Quadra coberta:</b></div>
           <span class="section-info-text">{{ID_QUADRA_ESPORTES_COBERTA}}</span>
         </div>
       </div>
       <div class="section-info">
         <div class="section-info-line">
           <span aria-hidden="true" role="img" class="section-info-icon fa fa-fw fa-angle-right"></span>
-          <div class="section-info-icon" ><b>Quadra de esportes descoberta:</b></div>
+          <div class="section-info-icon" ><b>Quadra descoberta:</b></div>
           <span class="section-info-text">{{ID_QUADRA_ESPORTES_DESCOBERTA}}</span>
         </div>
       </div>
@@ -110,6 +110,66 @@
           <span class="section-info-text">{{LOCATION.LON}}</span>
         </div>
       </div>
+      <div class="section-divider" style="height: 10px; "></div>
+      <div style="background: none; width: 100%; text-align: center;">
+        <button type="button" class="btn btn-dark btn-sm bg-dark"
+                data-toggle="modal" data-target="#exampleModal"
+        >
+          <i id="toggle-settings-icon" class="fa fa-2x fa-commenting-o fa-fw"></i> Deixe seu comentário
+        </button>
+      </div>
     </div>
+
   </div>
 </nav>
+
+<!-- MODAL: SETTINGS -->
+<div class="modal fade" id="exampleModal" tabindex="-1"  role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Deixe seu comentário</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- modal body -->
+      <div class="modal-body">
+        <form >
+          <!-- Base Layers -->
+          <div class="form-group">
+            <label for="nomeUser">Nome:</label>
+            <input type="text" class="form-control" id="nomeUser" aria-describedby="nomeHelp" placeholder="Nome completo">
+
+          </div>
+          <div class="form-group">
+            <label for="cpfUser">CPF:</label>
+            <input type="number" class="form-control" id="cpfUser" aria-describedby="cpfHelp" placeholder="cpf">
+
+          </div>
+          <div class="form-group">
+            <label for="emailUser">Email</label>
+            <input type="email" class="form-control" id="emailUser" aria-describedby="emailHelp" placeholder="Email">
+
+          </div>
+          <div class="form-group">
+            <label for="comentarioUser">Comentário:</label>
+            <textarea class="form-control" id="comentarioUser" aria-describedby="comentarioHelp" rows="3"></textarea>
+            <small id="comentarioHelp" class="form-text text-muted">Inserir um comentário</small>
+          </div>
+        </form>
+      </div>
+      <!-- end modal body -->
+      <div class="modal-footer" style="background: none;">
+        <button type="button" class="btn btn-secondary bg-secondary" data-dismiss="modal">
+          <i  class="fa fa-fw fa-close"></i> Fechar
+        </button>
+        <button type="button" class="btn btn-primary bg-primary" (click)="onApply()">
+          <i  class="fa fa-fw fa-check"></i> Enviar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END MODAL: SETTINGS -->
