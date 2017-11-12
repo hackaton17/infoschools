@@ -40,4 +40,16 @@ export class SchoolService {
     });
   }
 
+  showSchoolsByIndicator(indicator, min, max) {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.url + '/' + indicator + '/' + min + '/' + max)
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
 }

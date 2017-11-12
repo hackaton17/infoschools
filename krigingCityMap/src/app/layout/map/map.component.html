@@ -49,28 +49,31 @@
     <div class="bg-light" style="padding: 10px;position: absolute; z-index: 401;
             left: 5px; bottom: 10px; width:600px; height: 90px;
             border: 2px solid rgba(0,0,0,0.2); border-radius: 4px; font-size: 13px;">
-      <form>
+      <form #f="ngForm" (ngSubmit) = "filterSchoolsByIndicator(f.value)">
         <label><b>Indicador educacional: </b></label>
         <div class="form-row align-items-center">
           <div class="col">
             <!--<label for="inlineFormCustomSelect">Indicador educacional: </label>-->
-            <select class="form-control form-control-sm" id="inlineFormCustomSelect">
-              <option selected>Indicador</option>
+            <select class="form-control form-control-sm"
+                    id="indicator" name="indicator" ngModel>
+              <option value="" selected>Indicador</option>
               <option value="ab1em_14">Taxa de Abandono</option>
               <option value="ap3em_14">Taxa de Aprovação</option>
             </select>
           </div>
           <div class="col">
-            <input type="number" class="form-control form-control-sm" placeholder="Min"
+            <input type="number" id="minValueIndicator" name="min" ngModel
+                   class="form-control form-control-sm" placeholder="Min"
             >
           </div>
           <div class="col">
-            <input type="number" class="form-control form-control-sm" placeholder="Max"
+            <input type="number" id="maxValueIndicator" name="max" ngModel
+                   class="form-control form-control-sm" placeholder="Max"
             >
           </div>
 
           <div class="col-auto">
-            <button type="submit" class="btn btn-primary" onclick="filterSchoolsByIndicator()">Submit</button>
+            <button type="submit" class="btn btn-primary" >Submit</button>
           </div>
         </div>
       </form>

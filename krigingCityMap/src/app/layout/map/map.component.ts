@@ -188,8 +188,46 @@ export class MapComponent implements OnInit {
     }
   }
 
-  filterSchoolsByIndicator() {
+  filterSchoolsByIndicator(form: any): void {
+    console.log('form: ',form);
 
+    if (form !== null) {
+
+      this.schoolService.showSchoolsByIndicator(form.indicator, form.min, form.max).then((res) => {
+        this.schoolsCoordinates = res;
+        console.log(this.schoolsCoordinates[1]);
+
+        const data: any[] = [];
+        console.log(this.schoolsCoordinates.length);
+        let popup = '';
+        let container = $('<div />');
+        let marker;
+        let school_i;
+        container.on('click', '.getSchoolInfo', function(){
+          alert('test');
+        });
+        for (let i = 0; i < this.schoolsCoordinates.length; i++) {
+          container = $('<div />');
+          school_i = this.schoolsCoordinates[i];
+          popup = '<b>ESCOLA: </b>' + school_i.NO_ENTIDAD +
+            '<br/><b>BAIRRO: </b>' + school_i.BAIRRO +
+            '<br/><b>ENDEREÇO: </b>' + school_i.ENDERECO + ' - ' + school_i.NUMERO  +
+            '<br/><b>LOC.: </b>' + school_i.lat + ', ' + school_i.lon +
+            '<br/><a href="#" class="getSchoolInfo">Informaçao da escola</a>';
+
+          // '<br/><input type="button" value="Ver informaçao da escola" id="bu-show-school-info" ' +
+          // '(click)="showSchoolInfo($event)"/>';
+          container.html(popup);
+          container.append($('<span class="bold">').text('...'));
+          marker = L.marker(L.latLng(school_i.lat, school_i.lon), {icon: this.schoolMarkerIcon});
+          // data.push(marker.bindPopup($('<a href="#" class="speciallink">TestLink</a>').click(function() {alert('test'); })[0]));
+          data.push(marker.bindPopup(container[0]));
+        }
+        this.markerClusterData = data;
+        console.log('getschoollist: ' , this.center);
+      }, (err) => {
+        console.log(err);
+      });
+    }
   }
-
 }
