@@ -29,7 +29,7 @@ Qualification.destroy_all
 i=0
 Schoolb.all.each do |sc|
   i+=1
-  if i % 3 == 0
+  if i % 10 == 0
       10.times do |index|
           Qualification.create(schoolb: sc, user: 1, user_type: Random.rand(3), 
           value: Random.rand(5), comment:"comment #{index}")

@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   get '/schoolbs/search' => 'schoolbs#search', defaults: { format: 'json' }
   get '/schoolbs/:id'    => 'schoolbs#show', defaults: { format: 'json' }
   get '/schoolbs/intervals/:test/:lo/:hi'  => 'schoolbs#intervals', defaults: { format: 'json' }
-  # # Qualifications.
-  # post '/qualifications'          => 'qualifications#create'
-  # get  '/qualifications/:qualification_id' => 'qualifications#index'
+  # Qualifications.
+  post '/qualifications'          => 'qualifications#create', defaults: { format: 'json' }
+  get  '/qualifications/:schoolb_id' => 'qualifications#index', defaults: { format: 'json' }
 
   #get '/schools',              to: redirect('/'), as: :schools
 
