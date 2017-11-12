@@ -1,22 +1,10 @@
 class SchoolsController < ApplicationController
 
-  def index
-
-    if request_has_errors?
-      render status: :bad_request
-      return
-    end
-
-    # Search for spots.
+  def search
     @schools = School.all
-
-    # Set request metadata.
-    @meta = {}.merge(
-      count: @schools.count,
-      timestamp: Time.now.to_f.to_s
-    )
-
-    check_pretty_render
   end
-
+  
+  def show
+    @school = School.find(params[:id])
+  end
 end

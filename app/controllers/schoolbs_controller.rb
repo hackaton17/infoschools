@@ -1,6 +1,10 @@
 class SchoolbsController < ApplicationController
   #before_action :set_schoolb, only: [:show, :update, :destroy]
 
+
+  def search
+    @schoolbs = Schoolb.all
+  end
   # GET /schoolbs
   # GET /schoolbs.json
   def index
@@ -10,7 +14,7 @@ class SchoolbsController < ApplicationController
   # GET /schoolbs/1
   # GET /schoolbs/1.json
   def show
-    @schoolbs = Schoolb.all
+    @schoolbs = Schoolb.find(params[:id])
   end
 
   # returns the list of all the

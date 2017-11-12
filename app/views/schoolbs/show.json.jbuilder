@@ -1,1 +1,1 @@
-json.partial! "schoolbs/schoolb", schoolb: @schoolb
+json.name @school.nomeesc

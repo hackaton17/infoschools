@@ -8,7 +8,7 @@ import {Http} from '@angular/http';
   encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent implements OnInit {
-  brand = "Krigging Cities";
+  brand = "GeoSchools";
   constructor( private http: Http) { }
 
   ngOnInit() {
