@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :schoolbs
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'application#index'
 
-  resources :schools
+  get '/schoolbs/list' => 'schoolbs#list', defaults: {format: 'json'}
+  # resources :schoolbs
+
   # get '/schools/show' => 'schools#show'
   # get '/schools/:id'    => 'schoos#show', as: :school
 

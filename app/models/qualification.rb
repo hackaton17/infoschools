@@ -1,5 +1,5 @@
 class Qualification < ApplicationRecord
 
   # Associations
-  belongs_to :school
+  belongs_to :schoolb
 end

@@ -1,5 +1,5 @@
 class SchoolbsController < ApplicationController
-  before_action :set_schoolb, only: [:show, :update, :destroy]
+  #before_action :set_schoolb, only: [:show, :update, :destroy]
 
   # GET /schoolbs
   # GET /schoolbs.json
@@ -10,6 +10,12 @@ class SchoolbsController < ApplicationController
   # GET /schoolbs/1
   # GET /schoolbs/1.json
   def show
+    @schoolbs = Schoolb.all
+  end
+
+  # returns the list of all the
+  def list
+    @schoolbs = Schoolb.all
   end
 
   # POST /schoolbs
