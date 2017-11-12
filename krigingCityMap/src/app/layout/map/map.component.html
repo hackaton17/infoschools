@@ -1,32 +1,47 @@
 <div>
   <div class="map-container" >
-
-      <!-- button to display/hide the school details -->
-      <div id="mymap" leaflet style="height: 100%;"
-           [leafletBaseLayers] = "baseLayers"
-           [leafletZoom] = "zoom"
-           [leafletCenter] = "center"
-           [leafletLayers] = "neighboringSchoolsLayer"
-           [leafletLayersControlOptions] = "layersControlOptions"
-
-           [leafletMarkerCluster] = "markerClusterData"
-           [leafletMarkerClusterOptions] = "markerClusterOptions"
-           (leafletMarkerClusterReady) = "markerClusterReady($event)"
+    <div class="navbar-expand-lg" style="position: absolute; z-index: 3000;
+              top: 10px;width: 100%">
+      <ng2-completer name="searchField"
+                     [(ngModel)]="searchField"
+                     #searchField1="ngModel"
+                     [datasource]="schoolListFiltered"
+                     [minSearchLength]="3"
+                     [selectOnClick]="true"
+                     [textSearching]="'Por favor aguarde, procurando...'"
+                     [textNoResults]="'Nenhúm resultado encontrado'"
+                     [placeholder]="'Digite o nome da escola que deseja avaliar'"
+                     (selected)="onSchoolSelected($event)"
       >
-      </div>
+      </ng2-completer>
+    </div>
 
-      <!--<div style="height: 100%;" leaflet [leafletOptions]="options2" [leafletLayers]="neighboringSchoolsLayer"></div>-->
-      <button type="button" *ngIf="schoolSelectedFlag"
-              style="position: absolute; z-index: 3000;
+    <!-- button to display/hide the school details -->
+    <div id="mymap" leaflet style="height: 100%;"
+         [leafletBaseLayers] = "baseLayers"
+         [leafletZoom] = "zoom"
+         [leafletCenter] = "center"
+         [leafletLayers] = "neighboringSchoolsLayer"
+         [leafletLayersControlOptions] = "layersControlOptions"
+
+         [leafletMarkerCluster] = "markerClusterData"
+         [leafletMarkerClusterOptions] = "markerClusterOptions"
+         (leafletMarkerClusterReady) = "markerClusterReady($event)"
+    >
+    </div>
+
+    <!--<div style="height: 100%;" leaflet [leafletOptions]="options2" [leafletLayers]="neighboringSchoolsLayer"></div>-->
+    <button type="button" *ngIf="schoolSelectedFlag"
+            style="position: absolute; z-index: 3000;
               right: 25px; top: 10px; width:40px; height: 50px;"
-              (click)="toggleSchoolDetails()">
-        <i style="right: 25px" id="toggle-school-details-icon" class="fa fa-fw fa-2x fa-chevron-left"></i>
-      </button>
+            (click)="toggleSchoolDetails()">
+      <i style="right: 25px" id="toggle-school-details-icon" class="fa fa-fw fa-2x fa-chevron-left"></i>
+    </button>
 
-      <!-- Schools Details -->
-      <!-- *ngIf="schoolSelectedFlag" -->
+    <!-- Schools Details -->
+    <!-- *ngIf="schoolSelectedFlag" -->
 
-      <app-school-details></app-school-details>
+    <app-school-details></app-school-details>
 
   </div>
 </div>

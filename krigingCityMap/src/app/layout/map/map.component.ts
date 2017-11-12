@@ -1,9 +1,12 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import {SchoolService} from '../../school.service';
 import {ShareddataService} from '../../services/shareddata.service';
 import {Router} from '@angular/router';
+import {CompleterData, CompleterItem, CompleterService} from 'ng2-completer';
+import {CustomData} from '../../custom.data';
+import {Http} from '@angular/http';
 
 @Component({
   selector: 'app-map',
@@ -16,13 +19,14 @@ export class MapComponent implements OnInit {
   centerLat = -23.552133;
   centerLng = -46.6331418;
   schoolsCoordinates: any;
+  schoolsCoordinatesObject: any;
   schoolSelectedID: string;
 
   schoolMarkerIcon = L.icon({
     iconUrl: 'assets/images/marcador_school_default.png',
-    iconSize: [45, 45], // size of the icon
-    iconAnchor: [22, 45], // point of the icon which will correspond to marker's location
-    popupAnchor: [0, -45] // point from which the popup should open relative to the iconAnchor
+    iconSize: [40, 40], // size of the icon
+    iconAnchor: [20, 40], // point of the icon which will correspond to marker's location
+    popupAnchor: [0, -40] // point from which the popup should open relative to the iconAnchor
   });
   selectedSchoolMarkerIcon = L.icon({
     iconUrl: 'assets/images/marcador_school_selected.png',
@@ -62,7 +66,7 @@ export class MapComponent implements OnInit {
     'Open Street Map': this.LAYER_OSM.layer,
     'Google Street Maps': this.LAYER_GSM.layer
   };
-  zoom = 14;
+  zoom = 15;
   // zoomOptions= L.control.zoom({position: 'topright'});
   zoomOptions = {
     position: 'topleft'
@@ -74,25 +78,56 @@ export class MapComponent implements OnInit {
   markerClusterData: any[] = [];
   markerClusterOptions: L.MarkerClusterGroupOptions;
 
+  // Search module
+  searchField: string;
+  schoolListFiltered: CompleterData;
+  selectedSchoolID = '';
+  @Output() onSchoolSel = new EventEmitter<string>();
+
+  // School Details
 
 
 
-  constructor(private schoolService: SchoolService,
+  constructor(private completerService: CompleterService,
+              private schoolService: SchoolService,
               private sharedDataService: ShareddataService,
-              private router: Router) { }
+              private router: Router,
+              private http: Http) {
+    this.schoolListFiltered = new CustomData(http);
+  }
 
   ngOnInit() {
 
     // get the school list and Map the schools only once time
     if (this.center.lat === -23.552133) {
       this.getSchoolsList();
+
+    }
+
+
+  }
+
+  onSchoolSelected(item: CompleterItem) {
+    console.log('onSchoolSelected', item);
+    this.toggleSchoolDetails();
+    if (item !== null) {
+      this.selectedSchoolID = item ? item.originalObject._id : '';
+      // send school ID to school-details component via observable subject
+      this.sharedDataService.sendSchoolID(this.selectedSchoolID);
+      this.onSchoolSel.emit(this.selectedSchoolID);
+      // Get the complete information about the selected school
+      // this.getSchoolDetailedInformation(this.selectedSchoolID);
+      // center the map in the selected school location
     }
   }
 
   getSchoolsList() {
     this.schoolSelectedFlag = true;
     this.schoolService.getAllSchools().then((res) => {
+      /*this.schoolsCoordinatesObject = res;
+      this.schoolsCoordinates = this.schoolsCoordinatesObject.schoolbs;*/
       this.schoolsCoordinates = res;
+      console.log(this.schoolsCoordinates);
 
       const data: any[] = [];
       console.log(this.schoolsCoordinates.length);
@@ -110,8 +145,8 @@ export class MapComponent implements OnInit {
           '<br/><b>BAIRRO: </b>' + school_i.BAIRRO +
           '<br/><b>ENDEREÇO: </b>' + school_i.ENDERECO + ' - ' + school_i.NUMERO  +
           '<br/><b>LOC.: </b>' + school_i.lat + ', ' + school_i.lon +
-          '<br/><a href="#" class="getSchoolInfo">Informaçao da escola</a> - ' +
-          '<a href="#" class="getSchoolInfo">Area de Ponderaçao</a>';
+          '<br/><a href="#" class="getSchoolInfo">Informaçao da escola</a>';
+
         // '<br/><input type="button" value="Ver informaçao da escola" id="bu-show-school-info" ' +
         // '(click)="showSchoolInfo($event)"/>';
         container.html(popup);
